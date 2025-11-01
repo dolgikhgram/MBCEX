@@ -1,0 +1,194 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 49px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tittle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-style: initial;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: fadeIn 0.6s ease-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 29px;
+}
+
+.bigBoxWrapper {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.bigBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 745.2897338867188px;
+    height: 262px;
+    border-radius: 16px;
+    background: rgba(255, 204, 0, 1);
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bigBox:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 204, 0, 0.4);
+    background: rgba(255, 214, 20, 1);
+}
+
+.section:nth-child(1) .bigBoxWrapper {
+    animation-delay: 0.4s;
+}
+
+.section:nth-child(2) .bigBoxWrapper {
+    animation-delay: 0.6s;
+}
+
+.tittleBoxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 245px;
+    padding-left: 34px;
+}
+
+.tittleBox {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-style: initial;
+    font-size: 32px;
+    line-height: 25.5px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.descriptionBox {
+    padding-left: 34px;
+    width: 692px;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-style: initial;
+    font-size: 16px;
+    line-height: 22.5px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.smallBoxWrapper {
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.smallBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 508px;
+    height: 262px;
+    border-radius: 16px;
+    background: rgba(255, 204, 0, 1);
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.section:nth-child(1) .smallBoxWrapper {
+    animation-delay: 0.3s;
+}
+
+.section:nth-child(2) .smallBoxWrapper {
+    animation-delay: 0.5s;
+}
+
+.smallBox:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 204, 0, 0.4);
+    background: rgba(255, 214, 20, 1);
+}
+
+.tittleSmallBoxContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 23px;
+    padding-left: 34px;
+}
+
+.descriptionSmallBox {
+    padding-left: 34px;
+    width: 409px;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    font-style: initial;
+    font-size: 16px;
+    line-height: 22.5px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.7);
+}

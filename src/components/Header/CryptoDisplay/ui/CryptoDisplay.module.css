@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.line {
+    width: 100vw;
+    height: 1px;
+    background-color: rgba(227, 170, 21, 1);
+    border: none;
+    margin-left: calc(-50vw + 50%);
+}
+
+.containerCoins {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.animatedContainer {
+    display: flex;
+    flex-direction: row;
+    animation: scroll 25s linear infinite;
+    width: 200%;
+}
+
+.animatedContainer:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.containerCoin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    min-width: 200px;
+    padding: 0 15px;
+}
+
+.coinName {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-style: initial;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 1);
+}
+
+.price {
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    font-style: initial;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .animatedContainer {
+        animation: scroll 35s linear infinite;
+    }
+
+    .containerCoin {
+        min-width: 150px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animatedContainer {
+        animation: none;
+    }
+}

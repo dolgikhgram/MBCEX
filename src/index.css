@@ -1,0 +1,113 @@
+body {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+/* Global animation system */
+:root {
+    /* Durations */
+    --anim-duration-xs: 120ms;
+    --anim-duration-sm: 220ms;
+    --anim-duration-md: 450ms;
+    --anim-duration-lg: 800ms;
+
+    /* Easing */
+    --anim-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --anim-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+    --anim-ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Distances */
+    --anim-translate-distance: 24px;
+
+    /* Glows */
+    --glow-color: rgba(255, 215, 0, 0.35);
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(var(--anim-translate-distance));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-soft {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow-pulse {
+    0% {
+        box-shadow: 0 0 0 0 var(--glow-color);
+    }
+    100% {
+        box-shadow: 0 0 0 12px rgba(255, 215, 0, 0);
+    }
+}
+
+/* Utilities */
+.reveal {
+    opacity: 0;
+    animation: fade-in var(--anim-duration-md) var(--anim-ease-out) forwards;
+}
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(var(--anim-translate-distance));
+    animation: fade-up var(--anim-duration-lg) var(--anim-ease-out) forwards;
+}
+
+.glow-hover {
+    transition:
+        transform var(--anim-duration-sm) var(--anim-ease-out),
+        box-shadow var(--anim-duration-sm) var(--anim-ease-out);
+}
+
+.glow-hover:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 28px rgba(255, 215, 0, 0.08),
+        0 0 0 1px rgba(255, 215, 0, 0.08);
+}
+
+.card-hover {
+    transition:
+        transform var(--anim-duration-sm) var(--anim-ease-out),
+        background var(--anim-duration-sm) var(--anim-ease-out),
+        box-shadow var(--anim-duration-sm) var(--anim-ease-out);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

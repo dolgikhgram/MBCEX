@@ -1,0 +1,290 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 80px 20px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-style: initial;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0;
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.boxContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 42px;
+    width: 840px;
+    min-height: 215px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 204, 0, 1) 0%, rgba(255, 214, 20, 1) 100%);
+    box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3);
+    padding: 40px;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.boxContainer:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(255, 204, 0, 0.5);
+}
+
+.rateContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+}
+
+.priceBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.priceBox:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+}
+
+.priceLabel {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+}
+
+.price {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.95);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.divider {
+    width: 2px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 1px;
+}
+
+.informationContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.infoItem:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.infoIcon {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.infotext {
+    font-family: Montserrat, sans-serif;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.85);
+    text-align: left;
+}
+
+.loadingText {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.errorText {
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: rgba(0, 0, 0, 0.95);
+}
+
+.cbrfBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.7);
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Анимации */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 920px) {
+    .boxContainer {
+        width: 100%;
+        max-width: 840px;
+    }
+
+    .rateContainer {
+        gap: 20px;
+    }
+
+    .informationContainer {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .infoItem {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .priceLabel {
+        font-size: 12px;
+    }
+
+    .divider {
+        display: none;
+    }
+
+    .rateContainer {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .title,
+    .boxContainer {
+        animation: none;
+        opacity: 1;
+    }
+
+    .price {
+        animation: none;
+    }
+}

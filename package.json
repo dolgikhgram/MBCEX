@@ -17,7 +17,6 @@
         "@lottiefiles/dotlottie-react": "^0.17.5",
         "react": "^19.1.1",
         "react-dom": "^19.1.1",
-        "react-yandex-maps": "^4.6.0",
         "zod": "^4.1.12"
     },
     "devDependencies": {

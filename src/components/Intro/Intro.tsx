@@ -1,7 +1,7 @@
 import Button from "../../ui/Button/Button";
 import s from "./Intro.module.css";
-import {DotLottieReact} from "@lottiefiles/dotlottie-react";
-import {openTelegramSupport} from "../../utils/header.ts";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { openTelegramSupport } from "../../utils/header.ts";
 
 const Intro = () => {
     return (
@@ -19,7 +19,7 @@ const Intro = () => {
                         <Button onClick={openTelegramSupport}>
                             <div className={s.btnContainer}>
                                 <div>Оставить заявку</div>
-                                <img src={`${import.meta.env.BASE_URL}button/tgBlack.svg`} alt="tgBlack"/>
+                                <img src={`${import.meta.env.BASE_URL}button/tgBlack.svg`} alt="tgBlack" />
                             </div>
                         </Button>
                     </div>

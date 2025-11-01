@@ -1,6 +1,6 @@
 import s from "./Footer.module.css";
-import {openTelegramSupport, scrollToSection} from "../../utils/header.ts";
-import {useState} from "react";
+import { openTelegramSupport, scrollToSection } from "../../utils/header.ts";
+import { useState } from "react";
 import Modal from "../Modal/Modal.tsx";
 
 const Footer = () => {
@@ -21,7 +21,7 @@ const Footer = () => {
     return (
         <div className={s.container}>
             <div className={s.section}>
-                <img src={`${import.meta.env.BASE_URL}footer/MBCEX.svg`} alt="MBCEX"/>
+                <img src={`${import.meta.env.BASE_URL}footer/MBCEX.svg`} alt="MBCEX" />
                 <div className={s.textContainer}>
                     <div className={s.text} onClick={() => openTelegramSupport()}>
                         Купить криптовалюту
@@ -782,7 +782,7 @@ const Footer = () => {
                     >
                         Поддержка
                     </div>
-                    <div className={s.text} onClick={openMapModal} style={{cursor: "pointer"}}>
+                    <div className={s.text} onClick={openMapModal} style={{ cursor: "pointer" }}>
                         Наш офис
                     </div>
                 </div>

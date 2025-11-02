@@ -102,6 +102,13 @@
     gap: 10px;
 }
 
+.btnContainer img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .lottieWrapper {
     position: relative;
     width: clamp(300px, 28vw, 500px);
@@ -160,6 +167,11 @@
     .lottieWrapper {
         width: clamp(400px, 30vw, 550px);
         height: clamp(320px, 24vw, 440px);
+    }
+
+    .btnContainer img {
+        width: 26px;
+        height: 26px;
     }
 }
 
@@ -230,6 +242,11 @@
         order: 3;
         grid-column: auto;
         grid-row: auto;
+    }
+
+    .btnContainer img {
+        width: 22px;
+        height: 22px;
     }
 }
 
@@ -302,6 +319,15 @@
         grid-column: auto;
         grid-row: auto;
     }
+
+    .btnContainer {
+        gap: 8px;
+    }
+
+    .btnContainer img {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -372,5 +398,36 @@
         order: 3;
         grid-column: auto;
         grid-row: auto;
+    }
+
+    .btnContainer {
+        gap: 6px;
+    }
+
+    .btnContainer img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 375px) {
+    .btnContainer {
+        gap: 5px;
+    }
+
+    .btnContainer img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 320px) {
+    .btnContainer {
+        gap: 4px;
+    }
+
+    .btnContainer img {
+        width: 14px;
+        height: 14px;
     }
 }

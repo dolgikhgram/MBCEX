@@ -70,7 +70,24 @@ const Rate = () => {
                         <div className={s.infotext}>Точный курс фиксируется во время сделки</div>
                     </div>
                     <div className={s.infoItem}>
-                        <div className={s.infoIcon}>⏱</div>
+                        <div className={s.infoIcon}>
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                                <path
+                                    d="M8 4V8L11 10"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
                         <div className={s.infotext}>Время обработки заявки от 30 до 60 минут</div>
                     </div>
                     <div className={s.infoItem}>

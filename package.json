@@ -11,7 +11,7 @@
         "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
         "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
         "generate:types": "npx openapi-typescript https://api.coingecko.com/api-docs -o src/types/coingecko.ts",
-        "deploy": "node node_modules/gh-pages/bin/gh-pages.js -d dist"
+        "deploy": "touch dist/.nojekyll && node node_modules/gh-pages/bin/gh-pages.js -d dist"
     },
     "dependencies": {
         "@lottiefiles/dotlottie-react": "^0.17.5",

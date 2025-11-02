@@ -2,4 +2,48 @@
     display: flex;
     flex-direction: column;
     gap: 159px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Адаптивность для больших мониторов (1440px+) */
+@media (min-width: 1440px) {
+    .container {
+        gap: 180px;
+    }
+}
+
+/* Адаптивность для планшетов (до 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        gap: 120px;
+    }
+}
+
+/* Планшеты (до 960px) */
+@media (max-width: 960px) {
+    .container {
+        gap: 100px;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .container {
+        gap: 80px;
+    }
+}
+
+/* Средние телефоны (до 480px) */
+@media (max-width: 480px) {
+    .container {
+        gap: 60px;
+    }
+}
+
+/* Маленькие телефоны (до 375px) */
+@media (max-width: 375px) {
+    .container {
+        gap: 50px;
+    }
 }

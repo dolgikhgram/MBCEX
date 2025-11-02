@@ -4,7 +4,10 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    padding: 80px 20px;
+    padding: 80px clamp(20px, 5vw, 60px);
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .title {
@@ -15,10 +18,11 @@
     font-family: Montserrat, sans-serif;
     font-weight: 700;
     font-style: initial;
-    font-size: 48px;
-    line-height: 60px;
+    font-size: clamp(28px, 5vw, 48px);
+    line-height: clamp(38px, 7vw, 60px);
     letter-spacing: 0;
     color: rgba(255, 255, 255, 0.8);
+    text-align: center;
     opacity: 0;
     animation: fadeInDown 0.8s ease-out forwards;
 }
@@ -29,7 +33,8 @@
     justify-content: center;
     align-items: center;
     gap: 42px;
-    width: 840px;
+    width: 100%;
+    max-width: 840px;
     min-height: 215px;
     opacity: 0;
     animation: fadeInUp 1s ease-out 0.3s forwards;
@@ -232,31 +237,139 @@
     }
 }
 
-/* Адаптивность */
-@media (max-width: 920px) {
+/* Адаптивность для больших мониторов (1440px+) */
+@media (min-width: 1440px) {
+    .container {
+        padding: 90px clamp(40px, 6vw, 80px);
+        gap: 55px;
+        max-width: 1800px;
+    }
+
+    .title {
+        font-size: 52px;
+        line-height: 64px;
+    }
+
     .boxContainer {
-        width: 100%;
-        max-width: 840px;
+        padding: 45px;
+        gap: 45px;
+        max-width: 900px;
     }
 
-    .rateContainer {
-        gap: 20px;
+    .price {
+        font-size: 36px;
     }
 
-    .informationContainer {
-        flex-direction: column;
-        gap: 12px;
+    .priceLabel {
+        font-size: 15px;
     }
 
-    .infoItem {
-        width: 100%;
+    .infotext {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .infoIcon {
+        width: 26px;
+        height: 26px;
+        font-size: 19px;
     }
 }
 
-@media (max-width: 768px) {
+/* Адаптивность для планшетов (до 1400px) */
+@media (max-width: 1400px) {
+    .container {
+        padding: 70px clamp(20px, 4vw, 50px);
+        gap: 45px;
+    }
+
+    .boxContainer {
+        padding: 38px;
+    }
+}
+
+/* Адаптивность для планшетов (до 1200px) */
+@media (max-width: 1200px) {
+    .container {
+        padding: 60px clamp(20px, 4vw, 40px);
+        gap: 40px;
+    }
+
     .title {
-        font-size: 36px;
+        font-size: 42px;
+        line-height: 52px;
+    }
+
+    .boxContainer {
+        padding: 35px;
+        gap: 38px;
+    }
+
+    .rateContainer {
+        gap: 35px;
+    }
+
+    .price {
+        font-size: 30px;
+    }
+}
+
+/* Планшеты (до 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 55px clamp(20px, 3vw, 35px);
+        gap: 38px;
+    }
+
+    .title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .boxContainer {
+        padding: 32px;
+        gap: 35px;
+    }
+
+    .price {
+        font-size: 29px;
+    }
+
+    .priceLabel {
+        font-size: 13px;
+    }
+
+    .infoItem {
+        padding: 10px 14px;
+    }
+
+    .infotext {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .infoIcon {
+        width: 22px;
+        height: 22px;
+        font-size: 16px;
+    }
+}
+
+/* Планшеты средние (до 960px) */
+@media (max-width: 960px) {
+    .container {
+        padding: 50px clamp(20px, 3vw, 30px);
+        gap: 35px;
+    }
+
+    .title {
+        font-size: 38px;
         line-height: 48px;
+    }
+
+    .boxContainer {
+        padding: 30px;
+        gap: 32px;
     }
 
     .price {
@@ -267,6 +380,89 @@
         font-size: 12px;
     }
 
+    .rateContainer {
+        gap: 30px;
+    }
+
+    .infoItem {
+        padding: 10px 12px;
+    }
+
+    .infotext {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .infoIcon {
+        width: 21px;
+        height: 21px;
+        font-size: 15px;
+    }
+}
+
+/* Планшеты портрет (до 920px) */
+@media (max-width: 920px) {
+    .container {
+        padding: 48px clamp(18px, 2.5vw, 28px);
+        gap: 32px;
+    }
+
+    .title {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .boxContainer {
+        padding: 28px;
+        gap: 30px;
+    }
+
+    .rateContainer {
+        gap: 25px;
+    }
+
+    .price {
+        font-size: 27px;
+    }
+
+    .informationContainer {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .infoItem {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px clamp(16px, 4vw, 24px);
+        gap: 30px;
+    }
+
+    .title {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .boxContainer {
+        padding: 28px clamp(20px, 4vw, 24px);
+        gap: 28px;
+        border-radius: 14px;
+    }
+
+    .price {
+        font-size: 28px;
+    }
+
+    .priceLabel {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
     .divider {
         display: none;
     }
@@ -274,9 +470,240 @@
     .rateContainer {
         flex-direction: column;
         gap: 20px;
+        width: 100%;
+    }
+
+    .priceBox {
+        padding: 18px;
+        width: 100%;
+    }
+
+    .informationContainer {
+        gap: 12px;
+    }
+
+    .infoItem {
+        padding: 12px 16px;
+    }
+
+    .infotext {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .infoIcon {
+        width: 22px;
+        height: 22px;
+        font-size: 16px;
+    }
+
+    .cbrfBadge {
+        font-size: 11px;
+        padding: 7px 14px;
     }
 }
 
+/* Средние телефоны (до 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px clamp(16px, 4vw, 20px);
+        gap: 25px;
+    }
+
+    .title {
+        font-size: clamp(28px, 7vw, 32px);
+        line-height: clamp(38px, 9vw, 42px);
+    }
+
+    .boxContainer {
+        padding: 24px clamp(18px, 4vw, 20px);
+        gap: 24px;
+        min-height: auto;
+        border-radius: 12px;
+    }
+
+    .price {
+        font-size: clamp(24px, 6vw, 26px);
+    }
+
+    .priceLabel {
+        font-size: 11px;
+        line-height: 17px;
+    }
+
+    .priceBox {
+        padding: 16px;
+        gap: 6px;
+    }
+
+    .rateContainer {
+        gap: 18px;
+    }
+
+    .informationContainer {
+        gap: 10px;
+    }
+
+    .infoItem {
+        padding: 10px 14px;
+        gap: 8px;
+    }
+
+    .infotext {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .infoIcon {
+        width: 20px;
+        height: 20px;
+        font-size: 14px;
+    }
+
+    .cbrfBadge {
+        font-size: 10px;
+        padding: 6px 12px;
+    }
+}
+
+/* Маленькие телефоны (до 375px) */
+@media (max-width: 375px) {
+    .container {
+        padding: 25px clamp(12px, 3vw, 16px);
+        gap: 22px;
+    }
+
+    .title {
+        font-size: clamp(24px, 7vw, 28px);
+        line-height: clamp(32px, 9vw, 36px);
+    }
+
+    .boxContainer {
+        padding: 20px clamp(14px, 3vw, 16px);
+        gap: 20px;
+        border-radius: 10px;
+    }
+
+    .price {
+        font-size: clamp(22px, 6vw, 24px);
+    }
+
+    .priceLabel {
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .priceBox {
+        padding: 14px;
+        gap: 5px;
+    }
+
+    .rateContainer {
+        gap: 16px;
+    }
+
+    .informationContainer {
+        gap: 10px;
+    }
+
+    .infoItem {
+        padding: 10px 12px;
+        gap: 7px;
+    }
+
+    .infotext {
+        font-size: 9px;
+        line-height: 14px;
+    }
+
+    .infoIcon {
+        width: 18px;
+        height: 18px;
+        font-size: 12px;
+    }
+
+    .cbrfBadge {
+        font-size: 9px;
+        padding: 5px 11px;
+    }
+}
+
+/* Очень маленькие телефоны (до 320px) */
+@media (max-width: 320px) {
+    .container {
+        padding: 20px clamp(10px, 2vw, 12px);
+        gap: 18px;
+    }
+
+    .title {
+        font-size: clamp(20px, 7vw, 24px);
+        line-height: clamp(28px, 9vw, 32px);
+    }
+
+    .boxContainer {
+        padding: 18px clamp(12px, 3vw, 14px);
+        gap: 18px;
+        border-radius: 8px;
+    }
+
+    .price {
+        font-size: clamp(20px, 6vw, 22px);
+    }
+
+    .priceLabel {
+        font-size: 9px;
+        line-height: 14px;
+    }
+
+    .priceBox {
+        padding: 12px;
+        gap: 4px;
+    }
+
+    .rateContainer {
+        gap: 14px;
+    }
+
+    .infoItem {
+        padding: 8px 10px;
+    }
+
+    .infotext {
+        font-size: 8px;
+        line-height: 13px;
+    }
+
+    .infoIcon {
+        width: 16px;
+        height: 16px;
+        font-size: 11px;
+    }
+
+    .cbrfBadge {
+        font-size: 8px;
+        padding: 4px 10px;
+    }
+}
+
+/* Отключение hover эффектов на тач-устройствах */
+@media (hover: none) and (pointer: coarse) {
+    .boxContainer:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(255, 204, 0, 0.3);
+    }
+
+    .priceBox:hover {
+        background: rgba(0, 0, 0, 0.05);
+        transform: none;
+    }
+
+    .infoItem:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: none;
+    }
+}
+
+/* Оптимизация для устройств с reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .title,
     .boxContainer {

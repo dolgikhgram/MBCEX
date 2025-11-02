@@ -5,11 +5,11 @@
 }
 
 .line {
-    width: 100vw;
+    width: 100%;
     height: 1px;
     background-color: rgba(227, 170, 21, 1);
     border: none;
-    margin-left: calc(-50vw + 50%);
+    margin: 0;
 }
 
 .containerCoins {
@@ -73,14 +73,144 @@
     align-items: center;
 }
 
-/* Адаптивность */
+/* Адаптивность для больших мониторов (1440px+) */
+@media (min-width: 1440px) {
+    .containerCoin {
+        min-width: 220px;
+        gap: 12px;
+        padding: 0 18px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 22px;
+    }
+
+    .animatedContainer {
+        animation: scroll 20s linear infinite;
+    }
+}
+
+/* Адаптивность для планшетов и маленьких ноутбуков */
+@media (max-width: 1200px) {
+    .containerCoin {
+        min-width: 180px;
+        gap: 8px;
+        padding: 0 12px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .containerCoin {
+        min-width: 170px;
+        gap: 7px;
+        padding: 0 10px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 960px) {
+    .containerCoin {
+        min-width: 160px;
+        gap: 6px;
+        padding: 0 8px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 830px) {
+    .animatedContainer {
+        animation: scroll 30s linear infinite;
+    }
+
+    .containerCoin {
+        min-width: 150px;
+        gap: 6px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 768px) {
     .animatedContainer {
         animation: scroll 35s linear infinite;
     }
 
     .containerCoin {
-        min-width: 150px;
+        min-width: 140px;
+        gap: 5px;
+        padding: 0 8px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 14px;
+    }
+}
+
+/* Средние телефоны */
+@media (max-width: 480px) {
+    .animatedContainer {
+        animation: scroll 40s linear infinite;
+    }
+
+    .containerCoin {
+        min-width: 130px;
+        gap: 4px;
+        padding: 0 6px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 13px;
+    }
+}
+
+/* Стандартные телефоны */
+@media (max-width: 375px) {
+    .containerCoin {
+        min-width: 120px;
+        gap: 4px;
+        padding: 0 5px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 12px;
+    }
+}
+
+/* Маленькие телефоны */
+@media (max-width: 320px) {
+    .animatedContainer {
+        animation: scroll 45s linear infinite;
+    }
+
+    .containerCoin {
+        min-width: 110px;
+        gap: 3px;
+        padding: 0 4px;
+    }
+
+    .coinName,
+    .price {
+        font-size: 11px;
     }
 }
 

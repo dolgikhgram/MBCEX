@@ -14,7 +14,7 @@ const Modal: React.FC<ModalPropsType> = ({ isOpen, onClose, title, children }) =
         if (!isOpen) return;
 
         const onKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Enter") onClose();
+            if (e.key === "Escape") onClose();
         };
 
         document.addEventListener("keydown", onKeyDown);

@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
@@ -24,18 +25,24 @@
 .section {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-left: 100px;
-    padding-right: 343px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-left: clamp(20px, 5vw, 100px);
+    padding-right: clamp(20px, 5vw, 343px);
 }
 
 .textContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 100%;
+    max-width: 70%;
     gap: 39px;
+    flex-wrap: wrap;
 }
 
 .text {
@@ -69,4 +76,175 @@
 
 .text:hover::after {
     width: 100%;
+}
+
+/* Адаптивность для больших мониторов (1440px+) */
+@media (min-width: 1440px) {
+    .container {
+        height: 150px;
+    }
+
+    .section {
+        max-width: 1800px;
+        padding-left: clamp(40px, 6vw, 120px);
+        padding-right: clamp(40px, 6vw, 400px);
+    }
+
+    .textContainer {
+        gap: 45px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .section img {
+        width: 140px;
+        height: auto;
+    }
+}
+
+/* Адаптивность для планшетов (до 1200px) */
+@media (max-width: 1200px) {
+    .section {
+        padding-left: clamp(20px, 4vw, 60px);
+        padding-right: clamp(20px, 4vw, 280px);
+    }
+
+    .textContainer {
+        gap: 30px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}
+
+/* Планшеты (до 960px) */
+@media (max-width: 960px) {
+    .container {
+        height: auto;
+        padding: 30px 0;
+    }
+
+    .section {
+        flex-direction: column;
+        gap: 25px;
+        padding-left: clamp(20px, 4vw, 40px);
+        padding-right: clamp(20px, 4vw, 40px);
+        align-items: center;
+    }
+
+    .textContainer {
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .text {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .section img {
+        width: 120px;
+        height: auto;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px 0;
+    }
+
+    .section {
+        padding-left: clamp(16px, 4vw, 24px);
+        padding-right: clamp(16px, 4vw, 24px);
+        gap: 20px;
+    }
+
+    .textContainer {
+        gap: 18px;
+    }
+
+    .text {
+        font-size: 13px;
+    }
+
+    .section img {
+        width: 100px;
+    }
+}
+
+/* Средние телефоны (до 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 0;
+    }
+
+    .section {
+        padding-left: clamp(16px, 4vw, 20px);
+        padding-right: clamp(16px, 4vw, 20px);
+        gap: 18px;
+    }
+
+    .textContainer {
+        gap: 16px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .section img {
+        width: 90px;
+    }
+}
+
+/* Маленькие телефоны (до 375px) */
+@media (max-width: 375px) {
+    .container {
+        padding: 18px 0;
+    }
+
+    .section {
+        padding-left: clamp(12px, 3vw, 16px);
+        padding-right: clamp(12px, 3vw, 16px);
+        gap: 16px;
+    }
+
+    .textContainer {
+        gap: 14px;
+    }
+
+    .text {
+        font-size: 11px;
+    }
+
+    .section img {
+        width: 80px;
+    }
+}
+
+/* Очень маленькие телефоны (до 320px) */
+@media (max-width: 320px) {
+    .section {
+        padding-left: clamp(10px, 2vw, 12px);
+        padding-right: clamp(10px, 2vw, 12px);
+        gap: 14px;
+    }
+
+    .textContainer {
+        gap: 12px;
+    }
+
+    .text {
+        font-size: 10px;
+    }
+
+    .section img {
+        width: 70px;
+    }
 }

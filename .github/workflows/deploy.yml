@@ -31,6 +31,9 @@ jobs:
               run: npm ci
 
             - name: Build
+              env:
+                  VITE_API_CBRF_URL: ${{ secrets.VITE_API_CBRF_URL }}
+                  VITE_API_MOEX_URL: ${{ secrets.VITE_API_MOEX_URL }}
               run: npm run build
 
             - name: Setup Pages

@@ -26,6 +26,72 @@ VITE_API_MOEX_URL=https://iss.moex.com/iss/engines/currency/markets/selt/boards/
 - После изменения `.env` файла перезапустите dev сервер
 - Файл `.env` уже добавлен в `.gitignore` и не будет закоммичен в репозиторий
 
+## Деплой на GitHub Pages
+
+Проект поддерживает два способа деплоя на GitHub Pages:
+
+### Способ 1: Автоматический деплой через GitHub Actions (Рекомендуется)
+
+Проект автоматически деплоится при каждом push в ветку `main` через GitHub Actions workflow.
+
+**Первоначальная настройка:**
+
+1. Включите GitHub Pages в настройках репозитория:
+    - Перейдите в `Settings` → `Pages`
+    - В разделе `Source` выберите `GitHub Actions`
+
+2. (Опционально) Если используете свой домен для API в production:
+    - Перейдите в `Settings` → `Secrets and variables` → `Actions`
+    - Нажмите `New repository secret`
+    - Добавьте секреты:
+        - `VITE_API_CBRF_URL` - URL для API ЦБ РФ
+        - `VITE_API_MOEX_URL` - URL для API MOEX
+
+3. Сделайте push в ветку `main`:
+
+    ```bash
+    git add .
+    git commit -m "Deploy to GitHub Pages"
+    git push origin main
+    ```
+
+4. GitHub Actions автоматически соберет и задеплоит проект. Проверьте статус в разделе `Actions`.
+
+5. После успешного деплоя сайт будет доступен по адресу:
+   `https://dolgikhgram.github.io/MBCEX/`
+
+### Способ 2: Ручной деплой через gh-pages
+
+Если нужно задеплоить вручную:
+
+```bash
+npm run deploy
+```
+
+Эта команда автоматически:
+
+1. Соберет проект (`npm run build`)
+2. Задеплоит содержимое папки `dist` в ветку `gh-pages`
+
+**Важно для ручного деплоя:**
+
+- Убедитесь, что в `package.json` указан правильный `homepage`
+- Для production переменные окружения нужно задать перед сборкой:
+    ```bash
+    export VITE_API_CBRF_URL="https://your-api.com/cbrf"
+    export VITE_API_MOEX_URL="https://your-api.com/moex"
+    npm run deploy
+    ```
+
+### Проверка после деплоя
+
+После деплоя проверьте:
+
+- ✅ Сайт доступен по правильному URL
+- ✅ Все ресурсы (CSS, JS, изображения) загружаются
+- ✅ API запросы работают корректно
+- ✅ Маршрутизация работает (если используете React Router)
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh

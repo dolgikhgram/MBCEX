@@ -53,12 +53,16 @@
 }
 
 .telegramIcon {
+    width: 18px;
+    height: 18px;
     transition: opacity 0.3s ease;
 }
 
 .telegramIconGold {
     position: absolute;
     right: 0;
+    width: 18px;
+    height: 18px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -147,8 +151,8 @@
 
     .menuItem .telegramIcon,
     .menuItem .telegramIconGold {
-        width: 22px;
-        height: 22px;
+        width: 18px;
+        height: 18px;
     }
 
     .menuItem .telegramIconGold {
@@ -169,8 +173,8 @@
 
     .menuItem .telegramIcon,
     .menuItem .telegramIconGold {
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
     }
 
     .menuItem .telegramIconGold {
@@ -194,8 +198,8 @@
 
     .menuItem .telegramIcon,
     .menuItem .telegramIconGold {
-        width: 18px;
-        height: 18px;
+        width: 14px;
+        height: 14px;
     }
 
     .menuItem .telegramIconGold {
@@ -219,8 +223,8 @@
 
     .menuItem .telegramIcon,
     .menuItem .telegramIconGold {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
     }
 
     .menuItem .telegramIconGold {
@@ -244,16 +248,16 @@
 }
 
 .menuItem .telegramIcon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     transition: opacity 0.3s ease;
 }
 
 .menuItem .telegramIconGold {
     position: absolute;
     right: 20px;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -335,8 +339,8 @@
 
     .telegramIcon,
     .telegramIconGold {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -365,6 +369,12 @@
 
     .sectionContainer {
         gap: 6px;
+    }
+
+    .telegramIcon,
+    .telegramIconGold {
+        width: 13px;
+        height: 13px;
     }
 }
 
@@ -397,8 +407,8 @@
 
     .telegramIcon,
     .telegramIconGold {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
     }
 }
 

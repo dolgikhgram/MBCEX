@@ -1,13 +1,16 @@
 import type { ExchangeRates } from "../../../types/currency.ts";
 
 // Конфигурация для различных источников API
+// Используйте переменные окружения VITE_API_MOEX_URL и VITE_API_CBRF_URL для указания своего домена
 const API_SOURCES = {
     MOEX: {
-        baseUrl: "https://iss.moex.com/iss/engines/currency/markets/selt/boards/CETS/securities",
+        baseUrl:
+            import.meta.env.VITE_API_MOEX_URL ||
+            "https://iss.moex.com/iss/engines/currency/markets/selt/boards/CETS/securities",
         pairs: ["USD_RUB__TOM", "EUR_RUB__TOM"],
     },
     CB_RF: {
-        baseUrl: "https://www.cbr-xml-daily.ru/daily_json.js",
+        baseUrl: import.meta.env.VITE_API_CBRF_URL || "https://www.cbr-xml-daily.ru/daily_json.js",
     },
 } as const;
 

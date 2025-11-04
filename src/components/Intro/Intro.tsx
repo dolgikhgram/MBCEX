@@ -9,7 +9,7 @@ const Intro = () => {
             <div className={s.content}>
                 <div className={s.titleContainer}>
                     <div className={s.title}>
-                        {`Безопасный и надёжный обменник
+                        {`Безопасный и надёжный обмен
                             криптовалюты на наличные`}
                     </div>
                     <div className={s.description}>

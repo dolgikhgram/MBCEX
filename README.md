@@ -2,6 +2,30 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Настройка API доменов
+
+Для использования собственного домена для API запросов создайте файл `.env` в корне проекта:
+
+```env
+# API Configuration
+# Если хотите использовать свой домен, укажите его здесь
+# Оставьте пустым для использования оригинальных API
+
+# Домен для API Центрального Банка РФ
+# Пример: https://api.yourdomain.com/cbrf
+VITE_API_CBRF_URL=https://www.cbr-xml-daily.ru/daily_json.js
+
+# Домен для API Московской биржи (MOEX)
+# Пример: https://api.yourdomain.com/moex
+VITE_API_MOEX_URL=https://iss.moex.com/iss/engines/currency/markets/selt/boards/CETS/securities
+```
+
+**Важно:**
+
+- В Vite переменные окружения должны начинаться с префикса `VITE_`
+- После изменения `.env` файла перезапустите dev сервер
+- Файл `.env` уже добавлен в `.gitignore` и не будет закоммичен в репозиторий
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
@@ -19,57 +43,57 @@ If you are developing a production application, we recommend updating the config
 
 ```js
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+    globalIgnores(["dist"]),
+    {
+        files: ["**/*.{ts,tsx}"],
+        extends: [
+            // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+            // Remove tseslint.configs.recommended and replace with this
+            tseslint.configs.recommendedTypeChecked,
+            // Alternatively, use this for stricter rules
+            tseslint.configs.strictTypeChecked,
+            // Optionally, add this for stylistic rules
+            tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+            // Other configs...
+        ],
+        languageOptions: {
+            parserOptions: {
+                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+                tsconfigRootDir: import.meta.dirname,
+            },
+            // other options...
+        },
     },
-  },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
+    globalIgnores(["dist"]),
+    {
+        files: ["**/*.{ts,tsx}"],
+        extends: [
+            // Other configs...
+            // Enable lint rules for React
+            reactX.configs["recommended-typescript"],
+            // Enable lint rules for React DOM
+            reactDom.configs.recommended,
+        ],
+        languageOptions: {
+            parserOptions: {
+                project: ["./tsconfig.node.json", "./tsconfig.app.json"],
+                tsconfigRootDir: import.meta.dirname,
+            },
+            // other options...
+        },
     },
-  },
-])
+]);
 ```

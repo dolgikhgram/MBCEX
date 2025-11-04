@@ -11,10 +11,10 @@ const AboutTheProject = () => {
                         <div className={s.bigBox}>
                             <div className={s.tittleBoxContainer}>
                                 <div className={s.tittleBox}>Быстро и безопасно</div>
-                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/shield.svg`} alt={"shield"} />
+                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/shield.svg`} alt={"shield"}/>
                             </div>
                             <div className={s.descriptionBox}>
-                                Обмены происходят в комфортном и безопасном офисе в городе Курск, в центре города.
+                                Обмены происходят в комфортном и безопасном офисе в центре городе Курск.
                                 Средняя скорость проведения сделки - 15 минут
                             </div>
                         </div>
@@ -23,7 +23,7 @@ const AboutTheProject = () => {
                         <div className={s.smallBox}>
                             <div className={s.tittleSmallBoxContainer}>
                                 <div className={s.tittleBox}>Доставка наличных</div>
-                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/delivery.svg`} alt={"delivery"} />
+                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/delivery.svg`} alt={"delivery"}/>
                             </div>
                             <div className={s.descriptionSmallBox}>
                                 Для наших клиентов доступна доставка наличных в любую нужную им точку
@@ -36,10 +36,11 @@ const AboutTheProject = () => {
                         <div className={s.smallBox}>
                             <div className={s.tittleSmallBoxContainer}>
                                 <div className={s.tittleBox}>VIP обслуживание</div>
-                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/premium.svg`} alt={"premium"} />
+                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/premium.svg`} alt={"premium"}/>
                             </div>
                             <div className={s.descriptionSmallBox}>
-                                Любой наш клиент получает высочайший сервис по обмену валюты. Персонального менеджера и
+                                Все наши клиенты получают высочайший сервис по обмену криптовалюты. Персонального
+                                менеджера и
                                 удовлетворение всех нужных потребностей!
                             </div>
                         </div>
@@ -48,7 +49,7 @@ const AboutTheProject = () => {
                         <div className={s.bigBox}>
                             <div className={s.tittleBoxContainer}>
                                 <div className={s.tittleBox}>Чистая криптовалюта</div>
-                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/clean.svg`} alt={"clean"} />
+                                <img src={`${import.meta.env.BASE_URL}aboutTheProject/clean.svg`} alt={"clean"}/>
                             </div>
                             <div className={s.descriptionBox}>
                                 При сотрудничестве с MBCEX вы получаете максимально чистую валюту или наличные, которые

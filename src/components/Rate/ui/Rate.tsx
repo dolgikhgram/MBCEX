@@ -33,9 +33,9 @@ const Rate = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Рассчитываем курсы обмена (продажа на 1.2% больше от ЦБ, покупка на 5.7% больше от ЦБ)
-    const sellRate = usdRate ? usdRate * 1.012 : null;
-    const buyRate = usdRate ? usdRate * 1.057 : null;
+    // Рассчитываем курсы обмена (продажа на 4.73% больше от ЦБ для получения 84.7, покупка на 0.48% меньше от ЦБ для получения 80.5)
+    const sellRate = usdRate ? usdRate * 1.0473 : null;
+    const buyRate = usdRate ? usdRate * 0.9952 : null;
 
     return (
         <div className={s.container}>

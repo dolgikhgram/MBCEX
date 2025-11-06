@@ -6,31 +6,127 @@ const Rate = () => {
     const [usdRate, setUsdRate] = useState<number | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null);
 
     useEffect(() => {
-        const loadRate = async () => {
+        const loadRate = async (retryCount = 0) => {
+            const MAX_RETRIES = 3;
+            const RETRY_DELAY = 2000; // 2 секунды
+
             try {
+                setError(null);
+                setLoading(true);
+
                 const data = await fetchExchangeRatesCBRF();
-                if (data) {
+
+                if (data && data.pairs) {
                     // Находим USD курс
                     const usdData = data.pairs.find((pair) => pair.code === "USD");
-                    if (usdData) {
-                        setUsdRate(usdData.buyRate);
+                    if (usdData && usdData.buyRate) {
+                        const newRate = usdData.buyRate;
+                        const updateTime = new Date();
+
+                        // Всегда обновляем время обновления для принудительного перерендера
+                        setLastUpdateTime(updateTime);
+
+                        // Принудительно обновляем состояние курса
+                        setUsdRate((prevRate) => {
+                            const changed = prevRate !== newRate;
+                            console.log("USD rate update:", {
+                                previous: prevRate,
+                                new: newRate,
+                                changed,
+                                timestamp: updateTime.toISOString(),
+                                updateTime: updateTime.getTime(),
+                            });
+                            // Всегда возвращаем новое значение для принудительного обновления
+                            return newRate;
+                        });
+
+                        console.log("USD rate loaded successfully:", {
+                            rate: newRate,
+                            timestamp: updateTime.toISOString(),
+                            updateTime: updateTime.getTime(),
+                        });
+                    } else {
+                        console.warn("USD rate not found in CBRF API response", {
+                            pairs: data.pairs,
+                            timestamp: data.timestamp,
+                        });
+                        if (retryCount < MAX_RETRIES) {
+                            console.log(`Retrying... (${retryCount + 1}/${MAX_RETRIES})`);
+                            setTimeout(() => loadRate(retryCount + 1), RETRY_DELAY);
+                            return;
+                        }
+                        setError("Курс USD не найден");
                     }
+                } else {
+                    console.error("Invalid CBRF API response", { data });
+                    if (retryCount < MAX_RETRIES) {
+                        console.log(`Retrying... (${retryCount + 1}/${MAX_RETRIES})`);
+                        setTimeout(() => loadRate(retryCount + 1), RETRY_DELAY);
+                        return;
+                    }
+                    setError("Ошибка загрузки курса");
                 }
             } catch (err) {
-                console.error("Error fetching USD rate:", err);
+                const errorDetails =
+                    err instanceof Error
+                        ? {
+                              message: err.message,
+                              stack: err.stack,
+                          }
+                        : { error: String(err) };
+
+                console.error("Error fetching USD rate:", errorDetails);
+
+                if (retryCount < MAX_RETRIES) {
+                    console.log(`Retrying after error... (${retryCount + 1}/${MAX_RETRIES})`);
+                    setTimeout(() => loadRate(retryCount + 1), RETRY_DELAY);
+                    return;
+                }
+
                 setError("Ошибка загрузки курса");
             } finally {
                 setLoading(false);
             }
         };
 
+        // Загружаем курс сразу при монтировании компонента
+        console.log("Rate component mounted, loading rate...", {
+            timestamp: new Date().toISOString(),
+        });
         loadRate();
 
-        // Обновляем курс каждые 30 минут
-        const interval = setInterval(loadRate, 180000);
-        return () => clearInterval(interval);
+        // Обновляем курс каждые 5 минут (для тестирования, можно вернуть 30 минут)
+        // 300000 = 5 минут, 1800000 = 30 минут
+        const interval = setInterval(() => {
+            console.log("Scheduled rate update triggered");
+            loadRate();
+        }, 300000);
+
+        // Обновляем курс при возврате фокуса на окно браузера
+        const handleFocus = () => {
+            console.log("Window focus event, reloading rate...");
+            loadRate();
+        };
+
+        // Обновляем курс при изменении видимости страницы (возврат на вкладку)
+        const handleVisibilityChange = () => {
+            if (!document.hidden) {
+                console.log("Page visibility changed to visible, reloading rate...");
+                loadRate();
+            }
+        };
+
+        window.addEventListener("focus", handleFocus);
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        return () => {
+            clearInterval(interval);
+            window.removeEventListener("focus", handleFocus);
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
     }, []);
 
     // Рассчитываем курсы обмена (продажа на 4.73% больше от ЦБ для получения 84.7, покупка на 0.48% меньше от ЦБ для получения 80.5)
@@ -95,7 +191,24 @@ const Rate = () => {
                         <div className={s.infotext}>Минимальная сумма сделки 20.000₽</div>
                     </div>
                 </div>
-                {!loading && usdRate && !error && <div className={s.cbrfBadge}>Курс ЦБ: {usdRate.toFixed(2)}₽</div>}
+                {!loading && usdRate && !error && (
+                    <div className={s.cbrfBadge} key={lastUpdateTime?.getTime()}>
+                        Курс ЦБ: {usdRate.toFixed(2)}₽
+                        {lastUpdateTime && (
+                            <span
+                                key={`time-${lastUpdateTime.getTime()}`}
+                                style={{ fontSize: "0.75em", opacity: 0.7, display: "block", marginTop: "4px" }}
+                            >
+                                Обновлено:{" "}
+                                {lastUpdateTime.toLocaleTimeString("ru-RU", {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    second: "2-digit",
+                                })}
+                            </span>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
     );

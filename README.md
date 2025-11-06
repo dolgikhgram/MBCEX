@@ -62,26 +62,80 @@ VITE_API_MOEX_URL=https://iss.moex.com/iss/engines/currency/markets/selt/boards/
 
 ### Способ 2: Ручной деплой через gh-pages
 
-Если нужно задеплоить вручную:
+**Настройка GitHub Pages для ручного деплоя:**
 
-```bash
-npm run deploy
-```
+1. Откройте настройки репозитория:
+    - Перейдите в `Settings` → `Pages`
 
-Эта команда автоматически:
+2. Измените источник деплоя:
+    - В разделе `Build and deployment` → `Source`
+    - Выберите **"Deploy from a branch"** (вместо "GitHub Actions")
+    - В выпадающем списке выберите ветку: **`gh-pages`**
+    - В папке выберите: **`/ (root)`**
+    - Нажмите **"Save"**
 
-1. Соберет проект (`npm run build`)
-2. Задеплоит содержимое папки `dist` в ветку `gh-pages`
+3. Выполните деплой:
+
+    ```bash
+    npm run deploy
+    ```
+
+4. Проверьте результат:
+    - После выполнения команды появится ветка `gh-pages`
+    - GitHub Pages автоматически задеплоит содержимое
+    - Сайт будет доступен через 1-2 минуты по адресу:
+      `https://dolgikhgram.github.io/MBCEX/`
+
+**Что делает команда `npm run deploy`:**
+
+- Запускает `npm run build` (собирает проект)
+- Использует `gh-pages` для публикации папки `dist` в ветку `gh-pages`
 
 **Важно для ручного деплоя:**
 
 - Убедитесь, что в `package.json` указан правильный `homepage`
 - Для production переменные окружения нужно задать перед сборкой:
+
     ```bash
+    # Linux/Mac
     export VITE_API_CBRF_URL="https://your-api.com/cbrf"
     export VITE_API_MOEX_URL="https://your-api.com/moex"
     npm run deploy
+
+    # Windows (PowerShell)
+    $env:VITE_API_CBRF_URL="https://your-api.com/cbrf"
+    $env:VITE_API_MOEX_URL="https://your-api.com/moex"
+    npm run deploy
     ```
+
+**Подробная инструкция:** См. файл [MANUAL_DEPLOY.md](./MANUAL_DEPLOY.md)
+
+## Настройка пользовательского домена
+
+Если вы купили собственный домен и хотите использовать его вместо `dolgikhgram.github.io/MBCEX`:
+
+### Быстрая настройка:
+
+1. **Настройте DNS записи** у вашего регистратора домена:
+    - Для поддомена `www`: добавьте CNAME запись `www` → `dolgikhgram.github.io`
+    - Для корневого домена: добавьте 4 A записи с IP адресами GitHub Pages
+
+2. **Добавьте домен в GitHub Pages:**
+    - `Settings` → `Pages` → `Custom domain`
+    - Введите ваш домен и нажмите `Save`
+
+3. **Настройте проект:**
+
+    ```bash
+    ./setup-custom-domain.sh yourdomain.com
+    ```
+
+4. **Задеплойте:**
+    ```bash
+    npm run deploy:custom
+    ```
+
+**Подробная инструкция:** См. файл [CUSTOM_DOMAIN.md](./CUSTOM_DOMAIN.md)
 
 ### Проверка после деплоя
 

@@ -14,7 +14,7 @@ const AboutTheProject = () => {
                                 <img src={`${import.meta.env.BASE_URL}aboutTheProject/shield.svg`} alt={"shield"}/>
                             </div>
                             <div className={s.descriptionBox}>
-                                Обмены происходят в комфортном и безопасном офисе в центре городе Курск.
+                                Обмены происходят в комфортном и безопасном офисе в центре города Курск.
                                 Средняя скорость проведения сделки - 15 минут
                             </div>
                         </div>
@@ -26,7 +26,7 @@ const AboutTheProject = () => {
                                 <img src={`${import.meta.env.BASE_URL}aboutTheProject/delivery.svg`} alt={"delivery"}/>
                             </div>
                             <div className={s.descriptionSmallBox}>
-                                Для наших клиентов доступна доставка наличных в любую нужную им точку
+                                Для наших клиентов доступна доставка наличных в любую точку в черте города.
                             </div>
                         </div>
                     </div>

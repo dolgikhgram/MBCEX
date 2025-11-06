@@ -26,9 +26,22 @@ jobs:
               with:
                   node-version: "20"
 
-            - name: Install dependencies
+            - name: Check Node and npm versions
+              shell: bash
               run: |
-                  npm install --legacy-peer-deps --no-audit --no-fund
+                  node --version
+                  npm --version
+                  which node
+                  which npm
+
+            - name: Install dependencies
+              shell: bash
+              env:
+                  SHELL: /bin/bash
+              run: |
+                  npm config set script-shell /bin/bash
+                  npm install --legacy-peer-deps --no-audit --no-fund --ignore-scripts
+                  npm rebuild --no-save esbuild
 
             - name: Build
               env:

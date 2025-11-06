@@ -64,13 +64,16 @@ export const fetchExchangeRatesCBRF = async (): Promise<ExchangeRates | null> =>
         // Используем несколько параметров для максимальной защиты от кэширования
         const timestamp = Date.now();
         const random = Math.random().toString(36).substring(7);
-        const url = `${API_SOURCES.CB_RF.baseUrl}?t=${timestamp}&r=${random}&_=${timestamp}`;
+        const url = `${API_SOURCES.CB_RF.baseUrl}?t=${timestamp}&r=${random}&_=${timestamp}&nocache=${timestamp}`;
 
-        console.log("Fetching CBRF rate from:", url);
+        console.log("Fetching CBRF rate from:", url, {
+            timestamp: new Date().toISOString(),
+            url: API_SOURCES.CB_RF.baseUrl,
+        });
 
         const response = await fetch(url, {
             method: "GET",
-            cache: "no-store", // Предотвращаем кэширование
+            cache: "no-store", // Предотвращаем кэширование браузером
             mode: "cors", // Явно указываем CORS режим
             credentials: "omit", // Не отправляем cookies
             referrerPolicy: "no-referrer", // Не отправляем referrer
@@ -83,11 +86,10 @@ export const fetchExchangeRatesCBRF = async (): Promise<ExchangeRates | null> =>
             throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
 
-        // Проверяем, что ответ действительно JSON
+        // Проверяем content-type (API возвращает application/javascript, но это нормально для .js файла)
         const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-            console.warn("CBRF API returned non-JSON response:", contentType);
-        }
+        // API ЦБ возвращает application/javascript, но содержимое - это валидный JSON
+        // Поэтому не выдаем предупреждение, если это JavaScript файл с JSON данными
 
         const data = await response.json().catch((parseError) => {
             throw new Error(`Failed to parse JSON response: ${parseError.message}`);
